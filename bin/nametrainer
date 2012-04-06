@@ -1,0 +1,38 @@
+#!/usr/bin/ruby -w
+
+require 'Qt'
+
+require 'nametrainer'
+
+SRCPATH = File.dirname(__FILE__)
+
+module Nametrainer
+
+  ERRORCODE = {:general => 1, :usage => 2}
+
+  # Prints an error message and a short help information, then exits.
+  def self.usage_fail(message) # :nodoc:
+    warn "#{PROGNAME}: #{message}"
+    warn "Use `#{PROGNAME} --help' for valid options."
+    exit ERRORCODE[:usage]
+  end
+end
+
+### main program
+
+# parse options
+begin
+  options = Nametrainer::Optionparser.parse!(ARGV)
+rescue => e
+  Nametrainer.usage_fail(e.message)
+end
+
+# set up demo mode
+if options[:demo]
+  options[:collection] = File.expand_path("#{SRCPATH}/../demo_collection")
+end
+
+# start
+app = Qt::Application.new ARGV
+Nametrainer::GUI.new(options[:collection])
+app.exec
