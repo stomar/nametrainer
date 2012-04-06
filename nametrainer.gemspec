@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
 
   s.summary = 'nametrainer is a name learning trainer using the Qt GUI toolkit.'
   s.description = s.summary + ' ' +
-              'It will assist you in learning people’s names from a collection of images.'
+              "It will assist you in learning people's names from a collection of images."
 
   s.authors = ['Marcus Stollsteimer']
   s.email = 'sto.mar@web.de'
