@@ -31,11 +31,11 @@ Gem::Specification.new do |s|
 
   s.files = %w{
       README.md
-      screenshot.png
       Rakefile
       nametrainer.gemspec
+      screenshot.png
     } +
-    Dir.glob('{bin,demo_collection,lib,man,test}/**/*')
+    Dir.glob('{bin,demo_collection,lib,test}/**/*')
 
   #s.add_dependency('iconv')  # only for 1.8; problematic on Windows (build tools necessary)
   s.add_development_dependency('rake')
