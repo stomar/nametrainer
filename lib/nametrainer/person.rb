@@ -12,7 +12,7 @@ module Nametrainer
   #   person1 = Person.new('Albert', nil)
   #   person2 = Person.new('Isaac', nil)
   #   person1.increase_score
-  #   puts [person1, person2].sort.map{|p| p.name}  => Isaac, Albert
+  #   puts [person1, person2].sort.map{|p| p.name }  => Isaac, Albert
   class Person
 
     attr_reader :name, :image

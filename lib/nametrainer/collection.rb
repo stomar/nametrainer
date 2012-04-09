@@ -38,16 +38,14 @@ module Nametrainer
       super()
       @directory = directory
       @extensions = extensions.to_set
-      @extensions.merge extensions.map {|i| i.upcase}
+      @extensions.merge extensions.map {|i| i.upcase }
       self.concat self.class.load(@directory, @extensions.to_a)
     end
 
     # Returns an array of all names.
     def names
       all_names = Array.new
-      self.each do |person|
-        all_names << person.name
-      end
+      self.each {|person| all_names << person.name }
 
       all_names
     end
@@ -55,9 +53,7 @@ module Nametrainer
     # Returns a hash with the score of all persons (name => score).
     def scores
       all_scores = {}
-      self.each do |person|
-        all_scores[person.name] = person.score
-      end
+      self.each {|person| all_scores[person.name] = person.score }
 
       all_scores
     end
@@ -81,9 +77,7 @@ module Nametrainer
     # Export all scores to file (YAML).
     def export_scores
       filename = File.expand_path("#{@directory}/#{SCORE_FILE}")
-      File.open(filename, 'w') do |f|
-        f.write(scores.to_yaml)
-      end
+      File.open(filename, 'w') {|f| f.write(scores.to_yaml) }
     end
 
     # Returns a random element, preferring persons with a smaller score.

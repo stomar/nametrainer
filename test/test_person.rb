@@ -25,8 +25,8 @@ describe Nametrainer::Person do
     p1 = Nametrainer::Person.new('Albert', nil)
     p2 = Nametrainer::Person.new('Isaac', nil)
     p1.score = 1
-    [p1, p2].sort.map{|p| p.name}.must_equal ['Isaac', 'Albert']
+    [p1, p2].sort.map{|p| p.name }.must_equal ['Isaac', 'Albert']
     p2.score = 2
-    [p1, p2].sort.map{|p| p.name}.must_equal ['Albert', 'Isaac']
+    [p1, p2].sort.map{|p| p.name }.must_equal ['Albert', 'Isaac']
   end
 end
