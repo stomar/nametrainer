@@ -126,7 +126,7 @@ module Nametrainer
     # from file name (remove extension, convert underscores).
     def self.get_name(file, extensions)
       name = file.dup
-      extensions.each {|ext| name.gsub!(/\.#{ext}$/, '') }  # remove file extension
+      extensions.each {|ext| name.gsub!(/\.#{ext}\Z/, '') }  # remove file extension
       begin
         info_file = "#{name}.txt"
         File.read(info_file).chomp
