@@ -29,6 +29,7 @@ module Nametrainer
       @name_label = Qt::Label.new
       @statistics_label = Qt::Label.new @statistics.to_s
       @ordered_checkbox = Qt::CheckBox.new 'Non-random order'
+      @display_checkbox = Qt::CheckBox.new "Display name at once"
 
       init_gui
       show
@@ -95,6 +96,7 @@ module Nametrainer
       answer_buttons.add_widget @wrong
 
       @ordered_checkbox.set_checked false
+      @display_checkbox.set_checked false
 
       right = Qt::VBoxLayout.new
       right.add_widget @show
@@ -104,6 +106,7 @@ module Nametrainer
       right.add_widget @statistics_label
       right.add_stretch 1
       right.add_widget @ordered_checkbox
+      right.add_widget @display_checkbox
       right.add_stretch 1
       right.add_widget load_collection
       right.add_widget help
@@ -233,6 +236,7 @@ module Nametrainer
       @image.load @person.image or @image = Qt::Pixmap.new  # delete image when load fails
       show_image
       enable_buttons
+      display_name  if @display_checkbox.is_checked
     end
 
     # Repaints the image when the application window is resized.

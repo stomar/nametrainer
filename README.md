@@ -26,11 +26,15 @@ Note that for reasons of speed and convenience it is not necessary
 to type in the name (so be honest to yourself).
 There are also keyboard shortcuts for "power users" (see the application's `Help`).
 
-Additional features:
+Additional settings:
 
 -   Check `Non-random order` to show the images in ordered sequence.
-    This facilitates quick recapitulation of already learned names
-    or learning of new names.
+
+-   Check `Display name at once` to display the names immediately when
+    a person is shown.
+
+These settings facilitate quick recapitulation of already learned names
+or learning of new names.
 
 Collections
 -----------
