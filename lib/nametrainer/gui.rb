@@ -28,6 +28,7 @@ module Nametrainer
       @image = Qt::Pixmap.new
       @name_label = Qt::Label.new
       @statistics_label = Qt::Label.new @statistics.to_s
+      @ordered_checkbox = Qt::CheckBox.new 'Non-random order'
 
       init_gui
       show
@@ -93,13 +94,17 @@ module Nametrainer
       answer_buttons.add_widget @correct
       answer_buttons.add_widget @wrong
 
+      @ordered_checkbox.set_checked false
+
       right = Qt::VBoxLayout.new
       right.add_widget @show
       right.add_layout answer_buttons
       right.add_stretch 1
       right.add_widget Qt::Label.new 'Statistics:'
       right.add_widget @statistics_label
-      right.add_stretch 3
+      right.add_stretch 1
+      right.add_widget @ordered_checkbox
+      right.add_stretch 1
       right.add_widget load_collection
       right.add_widget help
       right.add_widget quit
@@ -215,10 +220,16 @@ module Nametrainer
     end
 
     # Chooses and displays the next person,
-    # erases the displayed name and enables the <tt>Display Name</tt> button.
+    # erases the displayed name, and enables the <tt>Display Name</tt> button.
+    # "Next" means a random sample or, if the <tt>Non-random order</tt> checkbox is checked,
+    # the successor of the current person in the collection array.
     def choose_person
       @name_label.set_text ''
-      @person = @collection.sample
+      if @ordered_checkbox.is_checked
+        @person = @person.nil? ? @collection[0] : @collection.successor(@person)
+      else
+        @person = @collection.sample
+      end
       @image.load @person.image or @image = Qt::Pixmap.new  # delete image when load fails
       show_image
       enable_buttons
