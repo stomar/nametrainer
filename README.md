@@ -15,7 +15,7 @@ use `nametrainer --demo` or `nametrainer -d`.
 
 With a collection loaded, the application window will look similar to this:
 
-<img src="https://github.com/stomar/nametrainer/raw/master/screenshot.png" alt="Screenshot" width="431" height="405" />
+<img src="https://github.com/stomar/nametrainer/raw/master/screenshot.png" alt="Screenshot" width="455" height="403" />
 
 `nametrainer` shows a randomly chosen image.
 You can then display the corresponding name and tell the application
