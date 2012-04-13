@@ -85,6 +85,17 @@ module Nametrainer
       self.shuffle.sort[weighted_random_index]  # shuffle first, so that elements with equal scores get mixed up
     end
 
+    # Returns the successor of the specified element.
+    # The successor of the last element is the first element.
+    #
+    # +element+ - element whose successor should be returned
+    def successor(element)
+      index = self.index(element)
+      return nil  if index.nil?
+
+      (index == self.size - 1) ? self[0] : self[index + 1]
+    end
+
     private
 
     # Returns a random index (obsolete).

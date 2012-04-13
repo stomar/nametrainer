@@ -67,6 +67,15 @@ describe Nametrainer::Collection do
     @collection.sample.must_be_instance_of Nametrainer::Person
   end
 
+  it 'can return the successor of a person' do
+    p1 = @collection[0]
+    p2 = @collection[1]
+    p3 = @collection[2]
+    @collection.successor(p1).name.must_equal p2.name
+    @collection.successor(p2).name.must_equal p3.name
+    @collection.successor(p3).name.must_equal p1.name
+  end
+
   it 'can increase the score for a specified person' do
     person = @collection.last
     person.score.must_equal 0
