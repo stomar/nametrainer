@@ -24,7 +24,7 @@ Persons that you do not know will be shown more often.
 
 Note that for reasons of speed and convenience it is not necessary
 to type in the name (so be honest to yourself).
-There are also keyboard shortcuts for "power users".
+There are also keyboard shortcuts for "power users" (see the application's `Help`).
 
 Collections
 -----------
