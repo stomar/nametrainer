@@ -105,17 +105,25 @@ module Nametrainer
 
     # Returns a random index, preferring smaller indices.
     def weighted_random_index
-      max_index = self.size - 1
-      weighting_factor = 6  # index 0 will be about weighting_factor times more probable than max_index
-
-      # construct an array with indices by repeatedly adding different parts of a range of indices
-      indices = Array.new
-      range = Array.new(self.size) {|i| i }
-      1.upto(weighting_factor) do
-        |i| indices += range[0..(i.to_f/weighting_factor * max_index).ceil]
-      end
+      indices = indices_urn(:size => self.size, :weighting_factor => 6)
 
       indices[rand(indices.size)]
+    end
+
+    # Returns an array of all indices from 0 to :size - 1, where lower indices are
+    # more frequent than higher indices. Index 0 will be about :weighting_factor
+    # times more probable then the highest index.
+    def indices_urn(options)
+      size = options[:size]
+      weighting_factor = options[:weighting_factor]
+      urn = Array.new
+      # repeatedly add partial ranges of indices to urn
+      1.upto(weighting_factor) do |i|
+        count = (i.to_f/weighting_factor * size).ceil
+        urn += (0...count).to_a
+      end
+
+      urn
     end
 
     # class methods
