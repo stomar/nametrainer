@@ -20,6 +20,11 @@ describe Nametrainer::Optionparser do
     options[:demo].must_equal true
   end
 
+  it 'should recognize the --no-demo option' do
+    options = Nametrainer::Optionparser.parse!(['--no-demo'])
+    options[:demo].must_equal false
+  end
+
   it 'should not accept wrong number of arguments' do
     lambda { Nametrainer::Optionparser.parse!(['collection1', 'collection2']) }.must_raise ArgumentError
     lambda { Nametrainer::Optionparser.parse!(['']) }.must_raise ArgumentError

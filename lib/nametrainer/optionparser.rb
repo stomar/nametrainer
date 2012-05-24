@@ -48,8 +48,8 @@ module Nametrainer
           exit
         end
 
-        opt.on('-d', '--demo', 'Starts the application with a demo collection.') do
-          options[:demo] = true
+        opt.on('-d', '--[no-]demo', 'Starts the application with a demo collection.') do |d|
+          options[:demo] = d
         end
 
         opt.separator ''

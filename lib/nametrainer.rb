@@ -16,7 +16,7 @@
 #
 # == Options
 #
-# -d, --demo:: Starts the application with a demo collection.
+# -d, --[no-]demo:: Starts the application with a demo collection.
 #
 # -h, --help:: Prints a brief help message and exits.
 #
