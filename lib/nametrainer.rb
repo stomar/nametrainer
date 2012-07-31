@@ -35,7 +35,7 @@ require 'nametrainer/optionparser'
 require 'nametrainer/statistics'
 require 'nametrainer/version'
 
-# This module contains the classes for the +nametrainer+ tool
+# This module contains the classes for the +nametrainer+ tool.
 module Nametrainer
 
   FILE_EXTENSIONS = %w{png jpg jpeg}
