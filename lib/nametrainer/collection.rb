@@ -131,7 +131,7 @@ module Nametrainer
     # Load a collection. Returns an array of Person instances.
     def self.load(directory, extensions)
       extension_list = extensions.join(',')
-      files = Dir.glob("#{directory}/*.{#{extension_list}}")
+      files = Dir.glob("#{directory}/*.{#{extension_list}}").sort
       result = Array.new
       files.each do |file|
         name = get_name(file, extensions)
