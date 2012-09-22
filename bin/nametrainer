@@ -1,7 +1,5 @@
 #!/usr/bin/ruby -w
 
-require 'Qt'
-
 require 'nametrainer'
 
 SRCPATH = File.dirname(__FILE__)
