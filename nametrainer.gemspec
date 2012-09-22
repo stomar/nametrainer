@@ -1,4 +1,4 @@
-require 'lib/nametrainer/version'
+require './lib/nametrainer/version'
 
 version  = Nametrainer::VERSION
 date     = Nametrainer::DATE
