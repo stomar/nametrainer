@@ -143,6 +143,7 @@ module Nametrainer
       @collection_label.set_text "Collection: #{File.basename(@collection_dir)}"
       @statistics.reset
       @statistics_label.set_text @statistics.to_s
+      @person = nil
       choose_person
     end
 
