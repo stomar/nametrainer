@@ -16,7 +16,10 @@
 #
 # == Options
 #
-# -d, --[no-]demo:: Starts the application with a demo collection.
+# -d, --[no-]demo:: Start the application with a demo collection.
+#
+# -l, --[no-]learning-mode:: Start the application in `learning-mode':
+#                            use non-random order, display names at once.
 #
 # -h, --help:: Prints a brief help message and exits.
 #

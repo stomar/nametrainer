@@ -35,6 +35,8 @@ Additional settings:
 
 These settings facilitate quick recapitulation of already learned names
 or learning of new names.
+Starting the application with `nametrainer --learning-mode` or with
+`nametrainer -l` activates both settings.
 
 Collections
 -----------

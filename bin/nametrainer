@@ -32,5 +32,5 @@ end
 
 # start
 app = Qt::Application.new ARGV
-Nametrainer::GUI.new(options[:collection])
+Nametrainer::GUI.new(options)
 app.exec

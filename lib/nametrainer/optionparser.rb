@@ -18,8 +18,9 @@ module Nametrainer
     def self.parse!(argv)
 
       options = {
-        :collection => nil,
-        :demo       => false
+        :collection    => nil,
+        :demo          => false,
+        :learning_mode => false
       }
 
       opt_parser = OptionParser.new do |opt|
@@ -48,8 +49,14 @@ module Nametrainer
           exit
         end
 
-        opt.on('-d', '--[no-]demo', 'Starts the application with a demo collection.') do |d|
+        opt.on('-d', '--[no-]demo', 'Start the application with a demo collection.') do |d|
           options[:demo] = d
+        end
+
+        opt.on('-l', '--[no-]learning-mode',
+               "Start the application in `learning-mode':",
+               'use non-random order, display names at once.') do |l|
+          options[:learning_mode] = l
         end
 
         opt.separator ''

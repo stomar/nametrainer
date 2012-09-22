@@ -9,7 +9,8 @@ describe Nametrainer::Optionparser do
     options = Nametrainer::Optionparser.parse!(['collection'])
     expected = {
       :collection => 'collection',
-      :demo => false
+      :demo => false,
+      :learning_mode => false
     }
     options.must_equal expected
   end
@@ -23,6 +24,17 @@ describe Nametrainer::Optionparser do
   it 'should recognize the --no-demo option' do
     options = Nametrainer::Optionparser.parse!(['--no-demo'])
     options[:demo].must_equal false
+  end
+
+  it 'should recognize the -l option' do
+    options = Nametrainer::Optionparser.parse!(['-l'])
+    options[:collection].must_be_nil
+    options[:learning_mode].must_equal true
+  end
+
+  it 'should recognize the --no-learning-mode option' do
+    options = Nametrainer::Optionparser.parse!(['--no-learning-mode'])
+    options[:learning_mode].must_equal false
   end
 
   it 'should not accept wrong number of arguments' do

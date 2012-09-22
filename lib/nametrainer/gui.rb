@@ -10,7 +10,7 @@ module Nametrainer
     # You can specify a collection that is loaded at startup.
     #
     # +collection_dir+ - path to collection
-    def initialize(collection_dir = nil)
+    def initialize(options)
       super()
 
       set_window_title 'Name Trainer'
@@ -31,9 +31,15 @@ module Nametrainer
       @ordered_checkbox = Qt::CheckBox.new 'Non-random order'
       @display_checkbox = Qt::CheckBox.new "Display name at once"
 
+      if options[:learning_mode]
+        @ordered_checkbox.set_checked true
+        @display_checkbox.set_checked true
+      end
+
       init_gui
       show
 
+      collection_dir = options[:collection]
       init_collection File.expand_path(collection_dir)  unless collection_dir.nil?
     end
 
@@ -94,9 +100,6 @@ module Nametrainer
       answer_buttons = Qt::HBoxLayout.new
       answer_buttons.add_widget @correct
       answer_buttons.add_widget @wrong
-
-      @ordered_checkbox.set_checked false
-      @display_checkbox.set_checked false
 
       right = Qt::VBoxLayout.new
       right.add_widget @show
