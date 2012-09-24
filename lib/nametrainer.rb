@@ -2,28 +2,17 @@
 #
 # nametrainer - name learning trainer
 #
-# == Synopsis
-#
-#    nametrainer [options] [collection]
-#
 # == Description
 #
 # +nametrainer+ is a name learning trainer using Ruby and the Qt GUI toolkit.
 # It will assist you in learning people's names from a collection of images.
 #
-# See the project home page for additional information:
-# https://github.com/stomar/nametrainer/
+# == See also
 #
-# == Options
+# Use <tt>nametrainer --help</tt> to display a brief help message.
 #
-# -d, --[no-]demo:: Start the application with a demo collection.
-#
-# -l, --[no-]learning-mode:: Start the application in `learning-mode':
-#                            use non-random order, display names at once.
-#
-# -h, --help:: Prints a brief help message and exits.
-#
-# -v, --version:: Prints a brief version information and exits.
+# The full documentation for +nametrainer+ is available on the
+# project home page.
 #
 # == Author
 #
