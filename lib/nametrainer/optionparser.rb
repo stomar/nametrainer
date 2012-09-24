@@ -36,14 +36,14 @@ module Nametrainer
 
         # process --version and --help first,
         # exit successfully (GNU Coding Standards)
-        opt.on_tail('-h', '--help', 'Prints a brief help message and exits.') do
+        opt.on_tail('-h', '--help', 'Print a brief help message and exit.') do
           puts opt_parser
           puts "\nReport bugs on the #{PROGNAME} home page: <#{HOMEPAGE}>"
           exit
         end
 
         opt.on_tail('-v', '--version',
-                    'Prints a brief version information and exits.') do
+                    'Print a brief version information and exit.') do
           puts "#{PROGNAME} #{VERSION}"
           puts COPYRIGHT
           exit
