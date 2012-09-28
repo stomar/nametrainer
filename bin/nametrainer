@@ -32,5 +32,13 @@ end
 
 # start
 app = Qt::Application.new ARGV
+
+# try to add plugins path
+begin
+  qtbindings_path = Gem::Specification.find_by_name('qtbindings').gem_dir
+  app.add_library_path("#{qtbindings_path}/bin/plugins")
+rescue Gem::LoadError
+end
+
 Nametrainer::GUI.new(options)
 app.exec

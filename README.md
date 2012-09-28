@@ -57,8 +57,6 @@ Please note:
 
 -   Do not use special characters in file names; use underscore instead of space.
 -   Use UTF-8 encoding for TXT files.
--   **On Windows, JPG files might not be supported** (depending on the Qt version).
-    In this case use PNG images instead.
 
 Installation
 ------------
