@@ -223,7 +223,11 @@ module Nametrainer
 
     # Displays the image, scaled as large as possible.
     def show_image
-      @image_label.set_pixmap @image.scaled(@image_label.size, Qt::KeepAspectRatio)
+      if @image.null?
+        @image_label.set_text "<i>Unable to display `#{File.basename(@person.image)}'.</i>"
+      else
+        @image_label.set_pixmap @image.scaled(@image_label.size, Qt::KeepAspectRatio)
+      end
     end
 
     # Chooses and displays the next person,
