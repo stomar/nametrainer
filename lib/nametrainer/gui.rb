@@ -1,4 +1,3 @@
-require 'Qt'
 require 'iconv'  if RUBY_VERSION < '1.9' # utf-8 -> latin1 for QLabel
 
 module Nametrainer

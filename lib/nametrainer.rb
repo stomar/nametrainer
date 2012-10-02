@@ -20,7 +20,16 @@
 #
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 
-require 'nametrainer/gui'
+module Nametrainer; end
+
+begin
+  require 'Qt'
+  Nametrainer::QT_LOAD_ERROR = false
+rescue LoadError => e
+  Nametrainer::QT_LOAD_ERROR = e
+end
+
+require 'nametrainer/gui'  unless Nametrainer::QT_LOAD_ERROR
 require 'nametrainer/person'
 require 'nametrainer/collection'
 require 'nametrainer/optionparser'

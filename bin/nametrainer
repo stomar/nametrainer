@@ -8,6 +8,13 @@ module Nametrainer
 
   ERRORCODE = {:general => 1, :usage => 2}
 
+  # Prints an error message, then exits with +code+
+  # (<tt>:general</tt> or <tt>:usage</tt>).
+  def self.fail(message, code = :general) #
+    warn "#{PROGNAME}: #{message}"
+    exit ERRORCODE[code]
+  end
+
   # Prints an error message and a short help information, then exits.
   def self.usage_fail(message) # :nodoc:
     warn "#{PROGNAME}: #{message}"
@@ -24,6 +31,11 @@ begin
 rescue => e
   Nametrainer.usage_fail(e.message)
 end
+
+# exit gracefully for missing Qt bindings
+message =  "missing Ruby Qt bindings (LoadError)\n"
+message << "You should install the `qtbindings' gem."
+Nametrainer.fail(message)  if Nametrainer::QT_LOAD_ERROR
 
 # set up demo mode
 if options[:demo]
