@@ -65,12 +65,12 @@ Install with `gem install nametrainer`.
 
 You will also have to install Qt bindings for Ruby:
 
--   On Windows, the `qtbindings` gem should get you up and running.
-
 -   On Linux, install the appropriate package for your distribution,
     or compile the bindings using the `qtbindings` gem
     (see the [qtbindings README](https://github.com/ryanmelt/qtbindings#readme)
     for instructions).
+
+-   On Windows, the `qtbindings` gem should get you up and running.
 
 Acknowledgements
 ----------------
