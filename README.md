@@ -68,9 +68,7 @@ You will also have to install Qt bindings for Ruby:
 -   On Windows, the `qtbindings` gem should get you up and running.
 
 -   On Linux, install the appropriate package for your distribution,
-    e. g. `qt4-ruby` on Ubuntu.
-
-    You can also compile the bindings using the `qtbindings` gem
+    or compile the bindings using the `qtbindings` gem
     (see the [qtbindings README](https://github.com/ryanmelt/qtbindings#readme)
     for instructions).
 
