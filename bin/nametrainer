@@ -10,7 +10,7 @@ module Nametrainer
 
   # Prints an error message, then exits with +code+
   # (<tt>:general</tt> or <tt>:usage</tt>).
-  def self.fail(message, code = :general) #
+  def self.fail(message, code = :general)
     warn "#{PROGNAME}: #{message}"
     exit ERRORCODE[code]
   end
