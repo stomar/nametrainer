@@ -49,10 +49,7 @@ module Nametrainer
 
     # Returns a hash with the score of all persons (name => score).
     def scores
-      all_scores = {}
-      self.each {|person| all_scores[person.name] = person.score }
-
-      all_scores
+      Hash[self.map {|person| [person.name, person.score] }]
     end
 
     # Sets the score of some or all persons.
