@@ -80,6 +80,12 @@ module Nametrainer
       File.open(filename, 'w') {|f| f.write(scores.to_yaml) }
     end
 
+    # Delete score file.
+    def delete_scores
+      filename = File.expand_path("#{@directory}/#{SCORE_FILE}")
+      File.delete(filename)
+    end
+
     # Returns a random element, preferring persons with a smaller score.
     def sample
       self.shuffle.sort[weighted_random_index]  # shuffle first, so that elements with equal scores get mixed up

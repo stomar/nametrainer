@@ -41,12 +41,13 @@ describe Nametrainer::Collection do
     @collection.scores.must_equal @sample_scores
   end
 
-  it 'can save the scores to a file and load them again' do
+  it 'can save the scores to a file and load them again and delete them' do
     @collection.set_scores(@sample_scores)
     @collection.export_scores
     @collection.first.score = nil
     @collection.import_scores
     @collection.scores.must_equal @sample_scores
+    @collection.delete_scores
   end
 
   it 'can get sorted by the scores' do
