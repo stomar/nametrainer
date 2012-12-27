@@ -44,10 +44,7 @@ module Nametrainer
 
     # Returns an array of all names.
     def names
-      all_names = Array.new
-      self.each {|person| all_names << person.name }
-
-      all_names
+      self.map {|person| person.name }
     end
 
     # Returns a hash with the score of all persons (name => score).
@@ -138,13 +135,11 @@ module Nametrainer
     def self.load(directory, extensions)
       extension_list = extensions.join(',')
       files = Dir.glob("#{directory}/*.{#{extension_list}}").sort
-      result = Array.new
-      files.each do |file|
-        name = get_name(file, extensions)
-        result << Person.new(name, file)
-      end
 
-      result
+      files.map do |file|
+        name = get_name(file, extensions)
+        Person.new(name, file)
+      end
     end
 
     # Get name from corresponding `txt' file or
