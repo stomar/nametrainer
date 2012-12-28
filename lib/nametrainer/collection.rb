@@ -138,17 +138,13 @@ module Nametrainer
       extension_list = extensions.join(',')
       files = Dir.glob("#{directory}/*.{#{extension_list}}").sort
 
-      files.map do |file|
-        name = get_name(file, extensions)
-        Person.new(name, file)
-      end
+      files.map {|file| Person.new(get_name(file), file) }
     end
 
     # Get name from corresponding `txt' file or
     # from file name (remove extension, convert underscores).
-    def self.get_name(file, extensions)
-      name = file.dup
-      extensions.each {|ext| name.gsub!(/\.#{ext}\Z/, '') }  # remove file extension
+    def self.get_name(file)
+      name = file.gsub(/#{File.extname(file)}\Z/, '')
       begin
         info_file = "#{name}.txt"
         File.read(info_file).chomp
