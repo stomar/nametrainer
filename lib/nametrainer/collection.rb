@@ -1,5 +1,6 @@
 require 'set'
 require 'yaml'
+require 'forwardable'
 
 require 'nametrainer/person'
 
@@ -23,7 +24,13 @@ module Nametrainer
   #
   # Persons with a lower score are chosen more often
   # than persons with a higher score.
-  class Collection < Array
+  class Collection
+
+    extend Forwardable
+    def_delegators :@collection,
+                   :size, :empty?, :[], :last, :index, :shuffle, :map, :each
+
+    include Enumerable
 
     SCORE_FILE = 'nametrainer.dat'
 
@@ -35,11 +42,10 @@ module Nametrainer
     # +directory+ - collection directory
     # +extension+ - array of file extensions
     def initialize(directory, extensions)
-      super()
       @directory = directory
       @extensions = extensions.to_set
       @extensions.merge extensions.map {|i| i.upcase }
-      self.concat self.class.load(@directory, @extensions.to_a)
+      @collection = self.class.load(@directory, @extensions.to_a)
     end
 
     # Returns an array of all names.
