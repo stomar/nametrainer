@@ -43,8 +43,7 @@ module Nametrainer
     # +extension+ - array of file extensions
     def initialize(directory, extensions)
       @directory = directory
-      @extensions = extensions.to_set
-      @extensions.merge extensions.map {|i| i.upcase }
+      @extensions = extensions.to_set.merge extensions.map {|i| i.upcase }
       @collection = self.class.load(@directory, @extensions.to_a)
     end
 
@@ -96,10 +95,10 @@ module Nametrainer
     #
     # +element+ - element whose successor should be returned
     def successor(element)
-      index = self.index(element)
-      return nil  if index.nil?
+      element_index = self.index(element)
+      return nil  if element_index.nil?
 
-      (index == self.size - 1) ? self[0] : self[index + 1]
+      (element_index == self.size - 1) ? self[0] : self[element_index + 1]
     end
 
     private
