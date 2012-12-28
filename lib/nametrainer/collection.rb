@@ -49,19 +49,19 @@ module Nametrainer
 
     # Returns an array of all names.
     def names
-      self.map {|person| person.name }
+      map {|person| person.name }
     end
 
     # Returns a hash with the score of all persons (name => score).
     def scores
-      Hash[self.map {|person| [person.name, person.score] }]
+      Hash[map {|person| [person.name, person.score] }]
     end
 
     # Sets the score of some or all persons.
     #
     # +new_scores+ - hash with (name => score) values
     def set_scores(new_scores)
-      self.each do |person|
+      each do |person|
         person.score = new_scores[person.name]  unless new_scores[person.name].nil?
       end
     end
@@ -87,7 +87,7 @@ module Nametrainer
 
     # Returns a random element, preferring persons with a smaller score.
     def sample
-      self.shuffle.sort[weighted_random_index]  # shuffle first, so that elements with equal scores get mixed up
+      shuffle.sort[weighted_random_index]  # shuffle first, so that elements with equal scores get mixed up
     end
 
     # Returns the successor of the specified element.
@@ -95,22 +95,22 @@ module Nametrainer
     #
     # +element+ - element whose successor should be returned
     def successor(element)
-      element_index = self.index(element)
+      element_index = index(element)
       return nil  if element_index.nil?
 
-      (element_index == self.size - 1) ? self[0] : self[element_index + 1]
+      (element_index == size - 1) ? first : self[element_index + 1]
     end
 
     private
 
     # Returns a random index (obsolete).
     def random_index
-      rand(self.size)
+      rand(size)
     end
 
     # Returns a random index, preferring smaller indices.
     def weighted_random_index
-      indices = indices_urn(:size => self.size, :weighting_factor => 6)
+      indices = indices_urn(:size => size, :weighting_factor => 6)
 
       indices[rand(indices.size)]
     end
