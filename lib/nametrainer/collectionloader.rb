@@ -1,3 +1,5 @@
+require 'set'
+
 require 'nametrainer/person'
 
 module Nametrainer
@@ -18,7 +20,8 @@ module Nametrainer
     # +directory+ - collection directory
     # +extension+ - array of file extensions
     def self.load(directory, extensions)
-      extension_list = extensions.join(',')
+      extension_set = extensions.to_set.merge extensions.map {|i| i.upcase }
+      extension_list = extension_set.to_a.join(',')
       files = Dir.glob("#{directory}/*.{#{extension_list}}").sort
 
       files.map {|file| Person.new(get_name(file), file) }

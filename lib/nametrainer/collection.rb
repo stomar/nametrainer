@@ -1,4 +1,3 @@
-require 'set'
 require 'yaml'
 require 'forwardable'
 
@@ -41,8 +40,7 @@ module Nametrainer
     # +extension+ - array of file extensions
     def initialize(directory, extensions)
       @directory = directory
-      @extensions = extensions.to_set.merge extensions.map {|i| i.upcase }
-      @collection = CollectionLoader.load(@directory, @extensions.to_a)
+      @collection = CollectionLoader.load(@directory, extensions)
     end
 
     # Returns an array of all names.
