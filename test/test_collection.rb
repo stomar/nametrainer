@@ -3,7 +3,7 @@ require 'minitest/autorun'
 
 require 'nametrainer/collection'
 
-SRCPATH = File.dirname(__FILE__)
+SRCPATH = File.dirname(__FILE__)  unless defined?(SRCPATH)
 
 describe Nametrainer::Collection do
 
