@@ -7,7 +7,10 @@ module Nametrainer
   # a corresponding (image) file, and a score.
   #
   # Create a Collection instance with
-  #   collection = CollectionLoader.load(directory, extensions)
+  #   collection = CollectionLoader.load(
+  #                  :directory  => directory,
+  #                  :extensions => extensions
+  #                )
   #
   # You can get a random person from a collection with
   #   person = collection.sample

@@ -9,8 +9,11 @@ SRCPATH = File.dirname(__FILE__)  unless defined?(SRCPATH)
 describe Nametrainer::Collection do
 
   before do
-    extensions = %w{png jpg}
-    @collection = Nametrainer::CollectionLoader.load("#{SRCPATH}/collection", extensions)
+    args = {
+      :directory  => "#{SRCPATH}/collection",
+      :extensions => %w{png jpg}
+    }
+    @collection = Nametrainer::CollectionLoader.load(args)
     @sample_scores = {
       'Albert Einstein' => 3,
       'Paul Dirac' => 1,

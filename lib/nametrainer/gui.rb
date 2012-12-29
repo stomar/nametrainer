@@ -135,7 +135,11 @@ module Nametrainer
     #
     # +collection_dir+ - path to collection
     def init_collection(collection_dir)
-      collection = Nametrainer::CollectionLoader.load(collection_dir, Nametrainer::FILE_EXTENSIONS)
+      args = {
+        :directory  => collection_dir,
+        :extensions => Nametrainer::FILE_EXTENSIONS
+      }
+      collection = Nametrainer::CollectionLoader.load(args)
       if collection.nil? or collection.empty?
         Qt::MessageBox.warning self, 'Error', Nametrainer.collection_empty_message
         return

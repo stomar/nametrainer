@@ -8,8 +8,11 @@ SRCPATH = File.dirname(__FILE__)  unless defined?(SRCPATH)
 describe Nametrainer::CollectionLoader do
 
   before do
-    extensions = %w{png JPG}
-    @collection = Nametrainer::CollectionLoader.load("#{SRCPATH}/collection", extensions)
+    args = {
+      :directory  => "#{SRCPATH}/collection",
+      :extensions => %w{png JPG}
+    }
+    @collection = Nametrainer::CollectionLoader.load(args)
   end
 
   it 'returns a Collection instance' do
