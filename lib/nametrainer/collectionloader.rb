@@ -8,7 +8,7 @@ module Nametrainer
   # and returns an array of Person instances.
   #
   # It searches in the directory for files with the given
-  # file extensions (also in upper case) and for each creates
+  # file extensions (ignoring case) and for each creates
   # a Person instance, using the file name as the person's name
   # (extension is removed, underscore is converted to space)
   # or the content of a corresponding `txt' file, and the file name as
@@ -20,11 +20,11 @@ module Nametrainer
     # +directory+ - collection directory
     # +extension+ - array of file extensions
     def self.load(directory, extensions)
-      extension_set = extensions.to_set.merge extensions.map {|i| i.upcase }
-      extension_list = extension_set.to_a.join(',')
-      files = Dir.glob("#{directory}/*.{#{extension_list}}").sort
+      pattern = extensions.map {|ext| ext.downcase }.uniq.join('|')
+      valid_extensions = /\.(#{pattern})\Z/i
+      files = Dir.glob("#{directory}/*").grep(valid_extensions)
 
-      files.map {|file| Person.new(get_name(file), file) }
+      files.sort.map {|file| Person.new(get_name(file), file) }
     end
 
     # Get name from corresponding `txt' file or

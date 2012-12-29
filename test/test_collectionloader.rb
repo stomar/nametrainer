@@ -8,7 +8,7 @@ SRCPATH = File.dirname(__FILE__)  unless defined?(SRCPATH)
 describe Nametrainer::CollectionLoader do
 
   before do
-    extensions = %w{png jpg}
+    extensions = %w{png JPG}
     @collection = Nametrainer::CollectionLoader.load("#{SRCPATH}/collection", extensions)
   end
 

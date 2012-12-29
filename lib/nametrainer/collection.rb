@@ -33,7 +33,7 @@ module Nametrainer
 
     # Creates a Collection instance.
     # It searches in +directory+ for files with the given
-    # file extensions (also in upper case) and populates
+    # file extensions (ignoring case) and populates
     # the collection with corresponding Person instances.
     #
     # +directory+ - collection directory
