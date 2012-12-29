@@ -5,16 +5,9 @@ module Nametrainer
 
   # A class for a collection of persons, each with a name,
   # a corresponding (image) file, and a score.
-  # A collection contains instances of the Person class.
   #
-  # Open a collection with
-  #   collection = Collection.new(directory, extensions)
-  #
-  # For each file with an extension from the +extensions+ array a Person
-  # instance is created, using the file name as the person's name
-  # (extension is removed, underscore is converted to space)
-  # or the content of a corresponding `txt' file, and the file name as
-  # the +image+ attribute.
+  # Create a Collection instance with
+  #   collection = CollectionLoader.load(directory, extensions)
   #
   # You can get a random person from a collection with
   #   person = collection.sample
@@ -32,15 +25,12 @@ module Nametrainer
     SCORE_FILE = 'nametrainer.dat'
 
     # Creates a Collection instance.
-    # It searches in +directory+ for files with the given
-    # file extensions (ignoring case) and populates
-    # the collection with corresponding Person instances.
     #
+    # +persons+   - array of Person instances
     # +directory+ - collection directory
-    # +extension+ - array of file extensions
-    def initialize(directory, extensions)
+    def initialize(persons, directory)
+      @collection = persons
       @directory = directory
-      @collection = CollectionLoader.load(@directory, extensions)
     end
 
     # Returns an array of all names.

@@ -12,12 +12,12 @@ describe Nametrainer::CollectionLoader do
     @collection = Nametrainer::CollectionLoader.load("#{SRCPATH}/collection", extensions)
   end
 
-  it 'returns an array of Person instances' do
-    @collection.class.must_equal Array
+  it 'returns a Collection instance' do
+    @collection.class.must_equal Nametrainer::Collection
     @collection.first.class.must_equal Nametrainer::Person
   end
 
-  it 'returns the correct number of Person instances' do
+  it 'returns a collection with the correct size' do
     @collection.size.must_equal 3
   end
 end

@@ -2,6 +2,7 @@ require 'minitest/spec'
 require 'minitest/autorun'
 
 require 'nametrainer/collection'
+require 'nametrainer/collectionloader'
 
 SRCPATH = File.dirname(__FILE__)  unless defined?(SRCPATH)
 
@@ -9,7 +10,7 @@ describe Nametrainer::Collection do
 
   before do
     extensions = %w{png jpg}
-    @collection = Nametrainer::Collection.new("#{SRCPATH}/collection", extensions)
+    @collection = Nametrainer::CollectionLoader.load("#{SRCPATH}/collection", extensions)
     @sample_scores = {
       'Albert Einstein' => 3,
       'Paul Dirac' => 1,
