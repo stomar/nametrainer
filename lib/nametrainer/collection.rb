@@ -29,15 +29,15 @@ module Nametrainer
 
     SCORE_FILE = 'nametrainer.dat'
 
-    # Creates a Collection instance.
+    # Creates a Collection instance. Expects an argument hash with:
     #
-    # +persons+   - array of Person instances
-    # +directory+ - collection directory
-    # +rng_class+ - random number generator class, defaults to RNG
-    def initialize(persons, directory, rng_class = RNG)
-      @collection = persons
-      @directory = directory
-      @rng = rng_class
+    # +:persons+   - array of Person instances
+    # +:directory+ - collection directory
+    # +:rng_class+ - random number generator class, defaults to RNG
+    def initialize(args)
+      @collection = args[:persons]
+      @directory  = args[:directory]
+      @rng        = args[:rng_class] || RNG
     end
 
     # Returns an array of all names.

@@ -35,7 +35,7 @@ module Nametrainer
       files = Dir.glob("#{directory}/*").grep(valid_extensions)
       persons = files.sort.map {|file| person_class.new(get_name(file), file) }
 
-      collection_class.new(persons, directory)
+      collection_class.new(:persons => persons, :directory => directory)
     end
 
     private
