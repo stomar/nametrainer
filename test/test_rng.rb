@@ -7,12 +7,12 @@ describe Nametrainer::RNG do
 
   before do
     @size = 12
-    @rng = Nametrainer::RNG
+    @rng = Nametrainer::RNG.new(:size => @size, :weighting_factor => 4)
   end
 
   it 'returns random indices in the correct range' do
     samples = 100
-    indices = Array.new(samples) { @rng.rand(@size) }
+    indices = Array.new(samples) { @rng.rand }
     indices.size.must_equal samples
     indices.sort.first.must_be :>=, 0
     indices.sort.last.must_be :<, @size
@@ -23,7 +23,7 @@ describe Nametrainer::RNG do
                 3, 3, 3, 4, 4, 4, 5, 5, 5,
                 6, 6, 7, 7, 8, 8,
                 9, 10, 11]
-    indices = @rng.indices_urn(:size => 12, :weighting_factor => 4)
+    indices = @rng.indices_urn
     indices.sort.must_equal expected
   end
 end

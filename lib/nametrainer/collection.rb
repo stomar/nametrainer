@@ -33,11 +33,11 @@ module Nametrainer
     #
     # +:persons+   - array of Person instances
     # +:directory+ - collection directory
-    # +:rng_class+ - random number generator class, defaults to RNG
+    # +:rng+       - random number generator, defaults to RNG
     def initialize(args)
       @collection = args[:persons]
       @directory  = args[:directory]
-      @rng        = args[:rng_class] || RNG
+      @rng        = args[:rng] || RNG.new(:size => @collection.size, :weighting_factor => 6)
     end
 
     # Returns an array of all names.
@@ -80,7 +80,7 @@ module Nametrainer
 
     # Returns a random element, preferring persons with a smaller score.
     def sample
-      shuffle.sort[@rng.rand(size)]  # shuffle first to mix up elements with equal scores
+      shuffle.sort[@rng.rand]  # shuffle first to mix up elements with equal scores
     end
 
     # Returns the successor of the specified element.
