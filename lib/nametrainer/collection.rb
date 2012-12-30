@@ -1,6 +1,8 @@
 require 'yaml'
 require 'forwardable'
 
+require 'nametrainer/rng'
+
 module Nametrainer
 
   # A class for a collection of persons, each with a name,
@@ -31,9 +33,11 @@ module Nametrainer
     #
     # +persons+   - array of Person instances
     # +directory+ - collection directory
-    def initialize(persons, directory)
+    # +rng_class+ - random number generator class, defaults to RNG
+    def initialize(persons, directory, rng_class = RNG)
       @collection = persons
       @directory = directory
+      @rng = rng_class
     end
 
     # Returns an array of all names.
@@ -76,7 +80,7 @@ module Nametrainer
 
     # Returns a random element, preferring persons with a smaller score.
     def sample
-      shuffle.sort[weighted_random_index]  # shuffle first, so that elements with equal scores get mixed up
+      shuffle.sort[@rng.rand(size)]  # shuffle first to mix up elements with equal scores
     end
 
     # Returns the successor of the specified element.
@@ -88,36 +92,6 @@ module Nametrainer
       return nil  if element_index.nil?
 
       (element_index == size - 1) ? first : self[element_index + 1]
-    end
-
-    private
-
-    # Returns a random index (obsolete).
-    def random_index
-      rand(size)
-    end
-
-    # Returns a random index, preferring smaller indices.
-    def weighted_random_index
-      indices = indices_urn(:size => size, :weighting_factor => 6)
-
-      indices[rand(indices.size)]
-    end
-
-    # Returns an array of all indices from 0 to :size - 1, where lower indices are
-    # more frequent than higher indices. Index 0 will be about :weighting_factor
-    # times more probable then the highest index.
-    def indices_urn(options)
-      size = options[:size]
-      weighting_factor = options[:weighting_factor]
-      urn = Array.new
-      # repeatedly add partial ranges of indices to urn
-      1.upto(weighting_factor) do |i|
-        count = (i.to_f/weighting_factor * size).ceil
-        urn += (0...count).to_a
-      end
-
-      urn
     end
   end
 end

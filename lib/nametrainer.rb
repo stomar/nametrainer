@@ -30,10 +30,11 @@ rescue LoadError => e
 end
 
 require 'nametrainer/gui'  unless Nametrainer::QT_LOAD_ERROR
-require 'nametrainer/person'
 require 'nametrainer/collection'
 require 'nametrainer/collectionloader'
 require 'nametrainer/optionparser'
+require 'nametrainer/person'
+require 'nametrainer/rng'
 require 'nametrainer/statistics'
 require 'nametrainer/version'
 
