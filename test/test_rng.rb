@@ -6,7 +6,7 @@ require 'nametrainer/rng'
 describe Nametrainer::RNG do
 
   before do
-    @size = 12
+    @size = 7
     @rng = Nametrainer::RNG.new(:size => @size, :weighting_factor => 4)
   end
 
@@ -28,19 +28,35 @@ describe Nametrainer::RNG do
     end
     relative_frequency = frequency.sort.map {|ind, freq| freq.to_f/samples }
 
-    expected = [4.0/30, 4.0/30, 4.0/30, 3.0/30, 3.0/30, 3.0/30,
-                2.0/30, 2.0/30, 2.0/30, 1.0/30, 1.0/30, 1.0/30]
+    expected = [4.0/17.5, 3.5/17.5, 3.0/17.5, 2.5/17.5,
+                2.0/17.5, 1.5/17.5, 1.0/17.5]
     relative_frequency.each_with_index do |freq, index|
       freq.must_be_within_epsilon expected[index], 0.05
     end
   end
 
-  it 'can return a weighted index list' do
-    expected = [0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2,
-                3, 3, 3, 4, 4, 4, 5, 5, 5,
-                6, 6, 7, 7, 8, 8,
-                9, 10, 11]
-    indices = @rng.indices_urn
-    indices.sort.must_equal expected
+  it 'can return a list of weighting factors' do
+    expected = [4, 3.5, 3, 2.5, 2, 1.5, 1]
+    factors = @rng.send(:weighting_factors)
+    factors.each_index do |index|
+      factors[index].must_be_close_to expected[index]
+    end
+  end
+
+  it 'can return a list of limits' do
+    expected = [4, 7.5, 10.5, 13, 15, 16.5, 17.5]
+    raw_limits = @rng.send(:raw_limits)
+    raw_limits.each_index do |index|
+      raw_limits[index].must_be_close_to expected[index]
+    end
+  end
+
+  it 'can return a list of normalized limits' do
+    expected = [4/17.5, 7.5/17.5, 10.5/17.5, 13/17.5,
+                15/17.5, 16.5/17.5, 17.5/17.5]
+    normalized_limits = @rng.send(:normalized_limits)
+    normalized_limits.each_index do |index|
+      normalized_limits[index].must_equal expected[index]
+    end
   end
 end
