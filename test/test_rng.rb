@@ -34,29 +34,4 @@ describe Nametrainer::RNG do
       freq.must_be_within_epsilon expected[index], 0.05
     end
   end
-
-  it 'can return a list of weighting factors' do
-    expected = [4, 3.5, 3, 2.5, 2, 1.5, 1]
-    factors = @rng.send(:weighting_factors)
-    factors.each_index do |index|
-      factors[index].must_be_close_to expected[index]
-    end
-  end
-
-  it 'can return a list of limits' do
-    expected = [4, 7.5, 10.5, 13, 15, 16.5, 17.5]
-    raw_limits = @rng.send(:raw_limits)
-    raw_limits.each_index do |index|
-      raw_limits[index].must_be_close_to expected[index]
-    end
-  end
-
-  it 'can return a list of normalized limits' do
-    expected = [4/17.5, 7.5/17.5, 10.5/17.5, 13/17.5,
-                15/17.5, 16.5/17.5, 17.5/17.5]
-    normalized_limits = @rng.send(:normalized_limits)
-    normalized_limits.each_index do |index|
-      normalized_limits[index].must_equal expected[index]
-    end
-  end
 end
