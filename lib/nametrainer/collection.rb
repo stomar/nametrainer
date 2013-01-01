@@ -91,7 +91,7 @@ module Nametrainer
       element_index = index(element)
       return nil  unless element_index
 
-      (element_index == size - 1) ? first : self[element_index + 1]
+      self[element_index + 1] || first
     end
   end
 end
