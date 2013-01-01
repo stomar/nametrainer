@@ -252,7 +252,7 @@ module Nametrainer
 
     # Repaints the image when the application window is resized.
     def resizeEvent(event)
-      return  if @image.null? || @image.nil?
+      return  if @image.nil? || @image.null?
       scaledSize = @image.size.scale(@image_label.size, Qt::KeepAspectRatio)
       show_image  if scaledSize != @image_label.pixmap.size
     end
