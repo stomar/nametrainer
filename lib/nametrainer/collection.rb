@@ -55,7 +55,7 @@ module Nametrainer
     # +new_scores+ - hash with (name => score) values
     def set_scores(new_scores)
       each do |person|
-        person.score = new_scores[person.name]  unless new_scores[person.name].nil?
+        person.score = new_scores[person.name]  if new_scores[person.name]
       end
     end
 

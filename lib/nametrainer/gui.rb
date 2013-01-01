@@ -39,7 +39,7 @@ module Nametrainer
       show
 
       collection_dir = options[:collection]
-      init_collection File.expand_path(collection_dir)  unless collection_dir.nil?
+      init_collection File.expand_path(collection_dir)  if collection_dir
     end
 
     # Initializes the GUI layout and functions.
@@ -127,8 +127,7 @@ module Nametrainer
     # Opens a file dialog and tries to load a collection.
     def load_collection
       collection_dir = Qt::FileDialog.get_existing_directory self, 'Load Collection'
-      return  if collection_dir.nil?
-      init_collection File.expand_path(collection_dir)
+      init_collection File.expand_path(collection_dir)  if collection_dir
     end
 
     # Tries to load a collection (does not change anything if load fails).
