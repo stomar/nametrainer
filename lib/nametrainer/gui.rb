@@ -240,7 +240,7 @@ module Nametrainer
     def choose_person
       @name_label.set_text ''
       if @ordered_checkbox.is_checked
-        @person = @person.nil? ? @collection[0] : @collection.successor(@person)
+        @person = @collection.successor(@person)
       else
         @person = @collection.sample
       end

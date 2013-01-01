@@ -83,13 +83,13 @@ module Nametrainer
       shuffle.sort[@rng.rand]  # shuffle first to mix up elements with equal scores
     end
 
-    # Returns the successor of the specified element.
-    # The successor of the last element is the first element.
+    # Returns the successor of the specified element, if possible,
+    # or the first element.
     #
     # +element+ - element whose successor should be returned
     def successor(element)
       element_index = index(element)
-      return nil  unless element_index
+      return first  unless element_index
 
       self[element_index + 1] || first
     end
