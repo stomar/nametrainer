@@ -89,7 +89,7 @@ module Nametrainer
     # +element+ - element whose successor should be returned
     def successor(element)
       element_index = index(element)
-      return nil  if element_index.nil?
+      return nil  unless element_index
 
       (element_index == size - 1) ? first : self[element_index + 1]
     end
