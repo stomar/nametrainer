@@ -73,11 +73,4 @@ describe Nametrainer::Collection do
     @collection.successor(p3).name.must_equal p1.name
     @collection.successor(nil).name.must_equal p1.name
   end
-
-  it 'can increase the score for a specified person' do
-    person = @collection.last
-    person.score.must_equal 0
-    person.increase_score
-    @collection.last.score.must_equal 1
-  end
 end
