@@ -1,8 +1,8 @@
 module Nametrainer
 
   PROGNAME = 'nametrainer'
-  VERSION  = '0.2.1'
-  DATE     = '2012-10-03'
+  VERSION  = '0.2.2'
+  DATE     = '2013-01-04'
   HOMEPAGE = 'https://github.com/stomar/nametrainer/'
 
   COPYRIGHT = "Copyright (C) 2012-2013 Marcus Stollsteimer.\n" +
