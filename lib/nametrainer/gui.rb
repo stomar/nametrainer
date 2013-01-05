@@ -139,7 +139,7 @@ module Nametrainer
         :extensions => Nametrainer::FILE_EXTENSIONS
       }
       collection = Nametrainer::CollectionLoader.load(args)
-      if collection.nil? or collection.empty?
+      if collection.nil? || collection.empty?
         Qt::MessageBox.warning self, 'Error', Nametrainer.collection_empty_message
         return
       end
