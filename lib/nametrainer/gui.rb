@@ -243,7 +243,7 @@ module Nametrainer
       else
         @person = @collection.sample
       end
-      @image.load @person.image or @image = Qt::Pixmap.new  # delete image when load fails
+      @image.load(@person.image)  or @image = Qt::Pixmap.new
       show_image
       enable_buttons
       display_name  if @display_checkbox.is_checked
