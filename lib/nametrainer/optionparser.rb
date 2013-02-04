@@ -25,14 +25,14 @@ module Nametrainer
 
       opt_parser = OptionParser.new do |opt|
         opt.banner = "Usage: #{PROGNAME} [options] [collection]"
-        opt.separator ''
-        opt.separator "#{PROGNAME} is a name learning trainer using Ruby and the Qt GUI toolkit."
-        opt.separator "It will assist you in learning people's names from a collection of images."
-        opt.separator ''
-        opt.separator 'See the project home page for additional information.'
-        opt.separator ''
-        opt.separator 'Options'
-        opt.separator ''
+        opt.separator %Q{
+          #{PROGNAME} is a name learning trainer using Ruby and the Qt GUI toolkit.
+          It will assist you in learning people's names from a collection of images.
+
+          See the project home page for additional information.
+
+          Options
+        }.gsub(/^ +/, '')
 
         # process --version and --help first,
         # exit successfully (GNU Coding Standards)
