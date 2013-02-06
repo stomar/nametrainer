@@ -31,7 +31,7 @@ module Nametrainer
 
     # Uses score for sorting.
     def <=>(other)
-      self.score <=> other.score
+      score <=> other.score
     end
   end
 end
