@@ -39,7 +39,6 @@ describe Nametrainer::Optionparser do
 
   it 'should not accept wrong number of arguments' do
     lambda { Nametrainer::Optionparser.parse!(['collection1', 'collection2']) }.must_raise ArgumentError
-    lambda { Nametrainer::Optionparser.parse!(['']) }.must_raise ArgumentError
     lambda { Nametrainer::Optionparser.parse!(['-d', 'collection']) }.must_raise ArgumentError
   end
 
