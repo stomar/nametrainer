@@ -8,7 +8,6 @@ Gem::Specification.new do |s|
   s.name              = 'nametrainer'
   s.version           = version
   s.date              = date
-  s.rubyforge_project = 'nametrainer'
 
   s.summary = 'nametrainer is a name learning trainer using the Qt GUI toolkit.'
   s.description = s.summary + ' ' +
@@ -22,12 +21,16 @@ Gem::Specification.new do |s|
 
   s.requirements << 'the Qt toolkit and Qt bindings for Ruby'
 
+  # s.add_dependency('iconv')  # only for 1.8; problematic on Windows (build tools necessary)
+  s.add_development_dependency('rake')
+  s.add_development_dependency('minitest')
+
   s.executables = ['nametrainer']
   s.bindir = 'bin'
-  s.require_path = 'lib'
-  s.test_files = Dir.glob('test/**/test_*.rb')
 
-  s.rdoc_options = ['--charset=UTF-8']
+  s.require_path = 'lib'
+
+  s.test_files = Dir.glob('test/**/test_*.rb')
 
   s.files = %w{
       README.md
@@ -37,7 +40,5 @@ Gem::Specification.new do |s|
     } +
     Dir.glob('{bin,demo_collection,lib,test}/**/*')
 
-  #s.add_dependency('iconv')  # only for 1.8; problematic on Windows (build tools necessary)
-  s.add_development_dependency('rake')
-  s.add_development_dependency('minitest')
+  s.rdoc_options = ['--charset=UTF-8']
 end
