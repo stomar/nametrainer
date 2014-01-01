@@ -63,8 +63,6 @@ module Nametrainer
       end
       opt_parser.parse!(argv)
 
-      argv.delete('')
-
       # only collection directory should be left in argv
       if options[:demo]
         raise(ArgumentError, 'wrong number of arguments')  unless argv.size == 0
