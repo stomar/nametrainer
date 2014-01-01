@@ -61,7 +61,7 @@ Please note:
 Installation
 ------------
 
-Install with `gem install nametrainer`.
+Install from RubyGems.org with `gem install nametrainer`.
 
 You will also have to install Qt bindings for Ruby:
 
