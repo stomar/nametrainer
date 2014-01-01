@@ -85,7 +85,7 @@ Report bugs on the `nametrainer` home page: <https://github.com/stomar/nametrain
 License
 -------
 
-Copyright &copy; 2012-2013 Marcus Stollsteimer
+Copyright &copy; 2012-2014 Marcus Stollsteimer
 
 `nametrainer` is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 3 or later (GPLv3+),
