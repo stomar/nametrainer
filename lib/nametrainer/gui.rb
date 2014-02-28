@@ -31,8 +31,8 @@ module Nametrainer
       @display_checkbox = Qt::CheckBox.new "Display name at once"
 
       if options[:learning_mode]
-        @ordered_checkbox.set_checked true
-        @display_checkbox.set_checked true
+        @ordered_checkbox.checked = true
+        @display_checkbox.checked = true
       end
 
       init_gui
@@ -45,8 +45,8 @@ module Nametrainer
     # Initializes the GUI layout and functions.
     def init_gui
       name_fontsize = 24
-      name_font = Qt::Font.new { setPointSize name_fontsize }
-      @name_label.set_font name_font
+      name_font = Qt::Font.new { set_point_size name_fontsize }
+      @name_label.font = name_font
       @image_label.set_size_policy Qt::SizePolicy::Ignored, Qt::SizePolicy::Ignored
 
       # create buttons
@@ -145,25 +145,25 @@ module Nametrainer
       end
       @collection_dir = collection_dir
       @collection = collection
-      @collection_label.set_text "Collection: #{File.basename(@collection_dir)}"
+      @collection_label.text = "Collection: #{File.basename(@collection_dir)}"
       @statistics.reset
-      @statistics_label.set_text @statistics.to_s
+      @statistics_label.text = @statistics.to_s
       @person = nil
       choose_person
     end
 
     # Disables the buttons that are only needed when a collection is loaded.
     def disable_buttons
-      @correct.set_enabled false
-      @wrong.set_enabled false
-      @show.set_enabled false
+      @correct.enabled = false
+      @wrong.enabled = false
+      @show.enabled = false
     end
 
     # Enables the buttons that are only needed when a collection is loaded.
     def enable_buttons
-      @correct.set_enabled true
-      @wrong.set_enabled true
-      @show.set_enabled true
+      @correct.enabled = true
+      @wrong.enabled = true
+      @show.enabled = true
     end
 
     # Quits application.
@@ -184,8 +184,8 @@ module Nametrainer
       else
         name_latin1 = @person.name.encode('ISO-8859-1', 'UTF-8')
       end
-      @name_label.set_text name_latin1
-      @show.set_enabled false
+      @name_label.text = name_latin1
+      @show.enabled = false
     end
 
     # Called when +Correct+ button is clicked.
@@ -215,7 +215,7 @@ module Nametrainer
       when :wrong
         @statistics.wrong += 1
       end
-      @statistics_label.set_text @statistics.to_s
+      @statistics_label.text = @statistics.to_s
     end
 
     # Increases the score for correctly recognized persons.
@@ -226,9 +226,9 @@ module Nametrainer
     # Displays the image, scaled as large as possible.
     def show_image
       if @image.null?
-        @image_label.set_text "<i>Unable to display `#{File.basename(@person.image)}'.</i>"
+        @image_label.text = "<i>Unable to display `#{File.basename(@person.image)}'.</i>"
       else
-        @image_label.set_pixmap @image.scaled(@image_label.size, Qt::KeepAspectRatio)
+        @image_label.pixmap = @image.scaled(@image_label.size, Qt::KeepAspectRatio)
       end
     end
 
@@ -237,7 +237,7 @@ module Nametrainer
     # "Next" means a random sample or, if the <tt>Non-random order</tt> checkbox is checked,
     # the successor of the current person in the collection array.
     def choose_person
-      @name_label.set_text ''
+      @name_label.clear
       if @ordered_checkbox.is_checked
         @person = @collection.successor(@person)
       else
