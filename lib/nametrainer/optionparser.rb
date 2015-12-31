@@ -31,7 +31,7 @@ module Nametrainer
 
           See the project home page for additional information.
 
-          Options
+          Options:
         }.gsub(/^ +/, '')
 
         # process --version and --help first,
