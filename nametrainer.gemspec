@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
   s.email = 'sto.mar@web.de'
   s.homepage = homepage
 
-  s.license = 'GPL-3'
+  s.license = 'GPL-3.0'
 
   s.requirements << 'the Qt toolkit and Qt bindings for Ruby'
 
