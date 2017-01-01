@@ -1,6 +1,6 @@
 # Rakefile for the nametrainer program.
 #
-# Copyright (C) 2012-2016 Marcus Stollsteimer
+# Copyright (C) 2012-2017 Marcus Stollsteimer
 
 require 'rake/testtask'
 
